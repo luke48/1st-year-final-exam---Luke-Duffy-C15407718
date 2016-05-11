@@ -1,0 +1,45 @@
+class Human extends Box
+{
+  PVector humpos;
+  color red;
+  PVector distance;
+  Human (float x, float y)
+  {
+    super (x,y);
+    humpos = new PVector (x,y);
+    distance = new PVector (x,y);
+    
+    red = color (240,63,59);
+  }
+  
+  void update()
+  {
+    if (boxy == true)
+    {
+      humpos.lerp(boxpos,0.5);
+    }
+    else
+    {
+      //println ("its working");
+      humpos.lerp(distance,0.5);
+    }
+  }
+  
+  void move()
+  {
+  }
+  
+  
+  void render()
+  {
+    pushMatrix();
+    translate (humpos.x,humpos.y);
+    
+    stroke (red);
+    fill (red);
+    ellipse (0,0,10,10);
+    rect (-5,12,10,20);
+    
+    popMatrix();
+  }
+}
