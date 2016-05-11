@@ -2,6 +2,9 @@ class Gameobject
 {
   PVector pos;
   boolean boxy;
+  boolean peepo; //mado, snudder mado, cushie, shuush, shhusher, ???, ohh... nasa /peepo/
+  float destroy;
+  PVector humpos;
   Gameobject(float x, float y)
   {
     pos = new PVector (x,y);
