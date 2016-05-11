@@ -1,0 +1,45 @@
+class Plane extends Gameobject
+{
+  color frame;
+  
+  Plane (float x, float y)
+  {
+    super (x,y);
+    pos = new PVector (x,y);
+    
+    frame = color(105);
+  }
+  
+  void update()
+  {
+    pos.x ++;
+    if (pos.x > width + 50)
+    {
+      pos.x = -50;
+    }
+    
+    if (keys[' ']
+     && boxy == false)
+    {
+      gameObject.add(new Box (pos.x, pos.y));
+      boxy = true;
+      //println ("come at me scrblord, i'm ripped");
+    }
+  }
+  
+  void render()
+  {
+    pushMatrix();
+    translate (pos.x, pos.y);
+    
+    stroke (frame);
+    fill (frame);
+    rect (-50,-20, 100, 40);
+    triangle (50,-20, 50,20, 90,20);
+    triangle (-50,-20, -50,-30, -40,-20);
+    rect (0,-20, 30,-30);
+    rect (0,20, 30,30);
+    
+    popMatrix();
+  }
+}
