@@ -1,0 +1,33 @@
+class Box extends Plane
+{
+  color pink;
+  PVector boxpos;
+  
+  Box (float x, float y)
+  {
+    super (x,y);
+    boxpos =  new PVector (x,y);
+    
+    pink = color (255,0,255);
+  }
+  
+  void update()
+  {
+    if (boxpos.y < 550)
+    {
+      boxpos.y += 5;
+    }
+  }
+  
+  void render()
+  {
+    pushMatrix();
+    translate (boxpos.x, boxpos.y);
+    
+    stroke (pink);
+    fill (pink);
+    rect (0,0,5,5);
+    
+    popMatrix();
+  }
+}
