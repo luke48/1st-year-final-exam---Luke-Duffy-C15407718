@@ -1,0 +1,16 @@
+class Gameobject
+{
+  PVector pos;
+  boolean boxy;
+  Gameobject(float x, float y)
+  {
+    pos = new PVector (x,y);
+    boxy = false;
+  }
+  
+  void update()
+  {}
+  
+  void render()
+  {}
+}
