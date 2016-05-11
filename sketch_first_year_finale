@@ -1,44 +1,57 @@
-void setup()
+class Human extends Box
 {
-  size (500,700);
-  gameObject.add(new Clouds (250,200));
-  gameObject.add(new Clouds (366,120));
-  gameObject.add(new Clouds (20,310));
-  gameObject.add(new Clouds (490,30));
-  gameObject.add(new Clouds (1000,270));
-  
-  gameObject.add(new Plane (100, 150));
-  
-  gameObject.add(new Human (50, 600));
-}
-
-ArrayList<Gameobject> gameObject = new ArrayList <Gameobject>();
-
-ArrayList<Box> boxes = new ArrayList <Box>();
-
-boolean[] keys =  new boolean [2000];
-
-void keyPressed()
-{
-  keys[keyCode] = true;
-}
-void keyReleased()
-{
-  keys[keyCode] = false;
-}
-
-void draw()
-{
-  background (100,150,255);
-  stroke (100,255,0);
-  fill (100,255,0);
-  rect (0,350,width,height);
-  
-  for (int i = 0; i < gameObject.size(); i++)
+  color red;
+  PVector distance;
+  Human (float x, float y)
   {
-    textSize (15);
-    Gameobject g = gameObject.get(i); 
-    g.render();
-    g.update();
+    super (x,y);
+    humpos = new PVector (x,y);
+    distance = new PVector (50,600);
+    red = color (240,63,59);
+  }
+  
+  void update()
+  {
+    
+    //humpos.lerp(distance,0.05);
+    if (boxamount >0)
+    {
+    humpos.lerp(boxp,0.05);
+    }
+    else
+    {
+    humpos.lerp(distance,0.05);
+    }
+    //humpos.lerp(boxp,0.05);
+    
+    
+    if (humpos.x >= boxp.x-5
+      &&humpos.x <= boxp.x +15
+      &&humpos.y >= boxp.y-5
+      &&humpos.y <= boxp.y+15)
+    {
+      destroying ++;
+      boxy = false;
+    }
+}
+  
+  void move()
+  {
+  }
+  
+  
+  void render()
+  {
+    pushMatrix();
+    translate (humpos.x,humpos.y);
+    
+    stroke (red);
+    fill (red);
+    ellipse (0,0,10,10);
+    rect (-5,12,10,20);
+    line (-5,20, -10,20);
+    line (5,20, 10,20);
+    
+    popMatrix();
   }
 }
