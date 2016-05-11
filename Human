@@ -1,29 +1,39 @@
 class Human extends Box
 {
-  PVector humpos;
   color red;
   PVector distance;
   Human (float x, float y)
   {
     super (x,y);
     humpos = new PVector (x,y);
-    distance = new PVector (x,y);
-    
+    distance = new PVector (50,600);
     red = color (240,63,59);
   }
   
   void update()
   {
-    if (boxy == true)
+    
+    //humpos.lerp(distance,0.05);
+    if (boxamount >0)
     {
-      humpos.lerp(boxpos,0.5);
+    humpos.lerp(boxp,0.05);
     }
     else
     {
-      //println ("its working");
-      humpos.lerp(distance,0.5);
+    humpos.lerp(distance,0.05);
     }
-  }
+    //humpos.lerp(boxp,0.05);
+    
+    
+    if (humpos.x >= boxp.x-5
+      &&humpos.x <= boxp.x +15
+      &&humpos.y >= boxp.y-5
+      &&humpos.y <= boxp.y+15)
+    {
+      destroying ++;
+      boxy = false;
+    }
+}
   
   void move()
   {
@@ -39,6 +49,8 @@ class Human extends Box
     fill (red);
     ellipse (0,0,10,10);
     rect (-5,12,10,20);
+    line (-5,20, -10,20);
+    line (5,20, 10,20);
     
     popMatrix();
   }
