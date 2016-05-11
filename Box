@@ -7,8 +7,10 @@ class Box extends Plane
   {
     super (x,y);
     boxpos =  new PVector (x,y);
+    peepo = false;
     
     pink = color (255,0,255);
+    destroy = 0;
   }
   
   void update()
@@ -16,6 +18,21 @@ class Box extends Plane
     if (boxpos.y < 550)
     {
       boxpos.y += 5;
+      boxpos.x += 0.5;
+    }
+    else
+    {
+      boxp = new PVector (boxpos.x, boxpos.y);
+      peepo = true;
+      println ("its working");
+      boxamount ++;
+    }
+    
+    if (destroying ==1)
+    {
+      destroy ++;
+      destroying =0;
+      boxamount = 0;
     }
   }
   
@@ -26,7 +43,7 @@ class Box extends Plane
     
     stroke (pink);
     fill (pink);
-    rect (0,0,5,5);
+    rect (0,0,10,10);
     
     popMatrix();
   }
