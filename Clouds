@@ -1,0 +1,32 @@
+class Clouds extends Gameobject
+{
+  Clouds (float x, float y)
+  {
+    super (x,y);
+    pos = new PVector (x,y);
+  }
+  
+  void update()
+  {
+    pos.x --;
+    if (pos.x < -50)
+    {
+      pos.x = width + 50;
+    }
+  }
+  
+  void render()
+  {
+    pushMatrix();
+    translate (pos.x, pos.y);
+    
+    stroke (255);
+    fill (255);
+    
+    ellipse (0,0, 50,30);
+    ellipse (-25,0, 25,15);
+    ellipse (25,0, 25,15);
+    
+    popMatrix();
+  }
+}
